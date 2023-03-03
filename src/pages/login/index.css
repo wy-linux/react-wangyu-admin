@@ -1,0 +1,28 @@
+.login {
+  display: flex;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+.login-container {
+  width: 300px;
+  height: 400px;
+}
+.login-container h1 {
+  text-align: center;
+}
+.login-container .input-select-btn {
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+.login-btn {
+  width: 100%;
+}
+.login-type {
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 24px;
+}
