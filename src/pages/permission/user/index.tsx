@@ -299,13 +299,15 @@ const User: React.FC = () => {
                 onClick={() => handleAddUser(2, row)}
               />
             </AuthButton>
-            <Button
-              type="primary"
-              icon={<DeleteOutlined />}
-              className="ml"
-              onClick={() => handleRemoveUser(row._id)}
-              danger
-            />
+            <AuthButton authKey="user.delete">
+              <Button
+                type="primary"
+                icon={<DeleteOutlined />}
+                className="ml"
+                onClick={() => handleRemoveUser(row._id)}
+                danger
+              />
+            </AuthButton>
           </>
         )
       },

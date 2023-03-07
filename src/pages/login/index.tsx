@@ -37,6 +37,8 @@ const Login: React.FC = () => {
                  <Select.Option value="查看用户管理@web.com">查看用户管理@web.com</Select.Option>
                  <Select.Option value="查看角色管理@web.com">查看角色管理@web.com</Select.Option>
                  <Select.Option value="查看菜单管理@web.com">查看菜单管理@web.com</Select.Option>
+                 <Select.Option value="用户管理无修改按钮@web.com">用户管理无修改按钮@web.com</Select.Option>
+                 <Select.Option value="用户管理无删除按钮@web.com">用户管理无删除按钮@web.com</Select.Option>
                 </Select>
             }
           </Form.Item>

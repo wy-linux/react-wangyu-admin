@@ -47,12 +47,14 @@ const Permision: React.FC = () => {
    */
   const getList = async () => {
     const res: any = await getPermissionList()
-    setExpandedRowKeys(getExpandedRowKeys(res))
+    if(expandedRowKeys.length === 0) {
+      setExpandedRowKeys(getExpandedRowKeys(res))
+    }
     setPermisionList(res)
   }
-const onExpandedRowsChange = (expandedRows:readonly React.Key[]) => {
-  setExpandedRowKeys(expandedRows)
-}
+  const onExpandedRowsChange = (expandedRows:readonly React.Key[]) => {
+    setExpandedRowKeys(expandedRows)
+  }
   /**
    * @description: 添加菜单
    * @returns {*}
