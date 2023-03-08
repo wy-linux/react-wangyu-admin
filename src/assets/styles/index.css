@@ -1,10 +1,13 @@
+html,
+body {
+  height: auto;
+}
 #root {
-    width: 100%;
-    min-width: 1200px;
-    height: 100%;
-  }
-  
+  width: 100%;
+  min-width: 1200px;
+  height: 100%;
   /* 全局通用样式 */
-  .ml {
-    margin-left: 10px;
-  }
+}
+#root .ml {
+  margin-left: 10px;
+}

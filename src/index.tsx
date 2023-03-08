@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "./assets/locales/i18n"; // 国际化
 import "antd/dist/antd.less";
-import "./assets/styles/index.css";
+import "./assets/styles/index.less";
 
 const root = createRoot(document.getElementById("root") as HTMLElement)
 
