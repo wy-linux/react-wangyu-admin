@@ -188,7 +188,7 @@ const Role: React.FC = () => {
   }
 
   const handleAuth = (row: RoleItemType) => {
-    navigate(`/wangyu/permission/assign/${row?._id}?roleName=${row.roleName}`)
+    navigate(`/permission/assign/${row?._id}?roleName=${row.roleName}`)
   }
 
   const columns: ColumnsType<UserItem> = [

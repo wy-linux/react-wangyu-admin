@@ -6,6 +6,7 @@ import { findSideBarRoutes } from "@/router";
 import { SRoutes } from "@/router/types";
 import type { MenuProps } from "antd";
 import "./index.less";
+import logo from '../../../assets/imgs/logo.png'
 type MenuItem = Required<MenuProps>["items"][number];
 const { Sider } = Layout;
 
@@ -41,7 +42,7 @@ const SideBar: React.FC = () => {
   const { pathname } = location;
 
   useEffect(() => {
-    const openKeys = pathname.split("/").slice(0, 3).join("/");
+    const openKeys = pathname.split("/").slice(0, 2).join("/");
     setOpenKeys([openKeys]);
     const selectedKeys = pathname.split("/").slice(0).join("/");
     setSelectedKeys([selectedKeys]);
@@ -75,7 +76,7 @@ const SideBar: React.FC = () => {
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} breakpoint="lg">
       <h1 className="layout-title" onClick={() => navigate('/')}>
-        {/* <img className="layout-logo" src={logo} alt="logo" /> */}
+        <img className="layout-logo" src={logo} alt="logo" />
         <span style={{ display: collapsed ? "none" : "inline-block" }}>{t("app:title")}</span>
       </h1>
       <Menu

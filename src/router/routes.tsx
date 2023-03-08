@@ -54,7 +54,7 @@ export const constantRoutes: SRoutes = [
         children: [
           {
             name: "home",
-            path: "/wangyu/home/index",
+            path: "/home/index",
             meta: {
               icon: <HomeOutlined />,
               title: <Translation>route:home</Translation>,
@@ -77,14 +77,14 @@ export const anyRoute = [
 // 需要权限的路由
 export const allAsyncRoutes: SRoutes = [
   {
-    path: "/wangyu",
+    path: "/",
     element: <Layout />,
-    name: "/wangyu",
+    name: "/",
     children: [
       // 首页路由
       {
         name: "/home",
-        path: "/wangyu/home",
+        path: "/home",
         meta: {
           icon: <HomeOutlined />,
           title: <Translation>route:home</Translation>,
@@ -93,7 +93,7 @@ export const allAsyncRoutes: SRoutes = [
         children: [
           {
             name: "/home/index",
-            path: "/wangyu/home/index",
+            path: "/home/index",
             meta: {
               title: "使用说明",
             },
@@ -103,7 +103,7 @@ export const allAsyncRoutes: SRoutes = [
       },
       {
         name: "/permission",
-        path: "/wangyu/permission",
+        path: "/permission",
         meta: {
           icon: <LockOutlined />,
           title: <Translation>route:permission</Translation>,
@@ -112,7 +112,7 @@ export const allAsyncRoutes: SRoutes = [
         children: [
           {
             name: "/permission/user",
-            path: "/wangyu/permission/user",
+            path: "/permission/user",
             meta: {
               title: "用户管理",
             },
@@ -120,7 +120,7 @@ export const allAsyncRoutes: SRoutes = [
           },
           {
             name: "/permission/role",
-            path: "/wangyu/permission/role",
+            path: "/permission/role",
             meta: {
               title: "角色管理",
             },
@@ -128,7 +128,7 @@ export const allAsyncRoutes: SRoutes = [
           },
           {
             name: "/permission/menu",
-            path: "/wangyu/permission/menu",
+            path: "/permission/menu",
             meta: {
               title: "菜单管理",
             },
@@ -136,7 +136,7 @@ export const allAsyncRoutes: SRoutes = [
           },
           {
             name: "/permission/assign",
-            path: "/wangyu/permission/assign/:id",
+            path: "/permission/assign/:id",
             meta: {
               title: "角色授权",
             },
@@ -147,7 +147,7 @@ export const allAsyncRoutes: SRoutes = [
       },
       {
         name: "/spider",
-        path: "/wangyu/spider",
+        path: "/spider",
         meta: {
           icon: <BugOutlined />,
           title: <Translation>route:spider</Translation>,
@@ -156,7 +156,7 @@ export const allAsyncRoutes: SRoutes = [
       },
       {
         name: "/github",
-        path: "/wangyu/github",
+        path: "/github",
         meta: {
           icon: <GithubOutlined />,
           title: <Translation>route:github</Translation>,

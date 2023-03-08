@@ -15,7 +15,7 @@ const withAuthorization = (WrappedComponent: FC) => {
     if (token) {
       // 如果要去的是登陆页面或根路径路由, 自动访问权限拥有页面
       if (pathname === "/login" || pathname === "/") {
-        return <Navigate to='/wangyu/home/index' />
+        return <Navigate to='/home/index' />
       }
       // 如果有用户名, 说明已经登陆, 直接渲染目标组件 LayoutComponent/xxx组件
       if(name) {

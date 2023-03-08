@@ -1,7 +1,7 @@
 import React, { useState, useEffect, MouseEvent } from "react";
 import { useLocation, useNavigate, matchPath } from "react-router-dom";
 import Tab from "./Tab";
-import routes from "@/router";
+import {resultRoutes} from "@/router";
 import { SRoutes, SMeta } from "@/router/types";
 import Translation from "@comps/Translation";
 import { TabsType } from "./types";
@@ -9,8 +9,8 @@ import "./index.less";
 
 const initTabs: TabsType = [
   {
-    key: "/wangyu/home/index",
-    path: "/wangyu/home/index",
+    key: "/home/index",
+    path: "/home/index",
     title: <Translation>route:home</Translation>,
     closable: false,
   },
@@ -19,7 +19,7 @@ const initTabs: TabsType = [
 const findTitle = (routes: SRoutes, pathname: string) => {
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    if (route.children) {
+    if (route.children?.length) {
       const title = findTitle(route.children, pathname) as string;
       if (title) return title;
     } else {
@@ -45,12 +45,10 @@ const Tabs: React.FC = () => {
       setActiveIndex(newActiveIndex);
       return;
     }
-
-    const title = findTitle(routes, pathname) as string;
+    const title = findTitle(resultRoutes, pathname) as string;
     if (!title) {
       return;
-    }
-
+    } 
     // 保存
     setTabs([
       ...tabs,

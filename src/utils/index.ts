@@ -2,7 +2,7 @@ import {findSideBarRoutes} from '../router'
 //返回持有权限的页面
 export function returnPagePermission () {
     const [routes] = findSideBarRoutes()
-    window.location.href = routes.children![0].path!
+    window.location.href = `#${routes.children![0].path!}`
     return null
 }
 //递归获取展开的table row id

@@ -99,7 +99,7 @@ const Auth: React.FC = () => {
     try {
       await doAssign(id, idsList);
       message.success('分配权限成功')
-      navigate('/wangyu/permission/role', {replace: true})
+      navigate('/permission/role', {replace: true})
       // TODO：分配权限以后还需要判断当前用户是否有分配的权限
     } catch(e) {}
   }
@@ -116,7 +116,7 @@ const Auth: React.FC = () => {
   }
 
   const handleCancel = () => {
-    navigate('/wangyu/permission/role', {replace: true})
+    navigate('/permission/role', {replace: true})
   }
 
   return (

@@ -24,7 +24,7 @@ const AvatarComponent: React.FC = () => {
 
   const items: MenuProps['items'] = [
         { 
-          label: <Link to="/wangyu/home/index">{t("goHomeBtnText")}</Link>, 
+          label: <Link to="/home/index">{t("goHomeBtnText")}</Link>, 
           key: '1' 
         }, // 菜单项务必填写 key
         { 
