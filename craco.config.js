@@ -32,6 +32,7 @@ module.exports = {
       "/dev-api": {
         // 需要转发的请求前缀
         target: 'https://www.wangyu.cloud:7000',
+        // target: 'https://localhost:7000',
         changeOrigin: true, // 为true时代理在转发时, 会将请求头的host改为target的值
         pathRewrite: { // 路径重写
           "^/dev-api": "", // 在转发请求时去掉多的/dev-api部分
