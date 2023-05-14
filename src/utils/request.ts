@@ -1,5 +1,6 @@
 
 import store from "../store";
+import {removeToken} from '@/store/slicers/userSlice'
 import { message } from "antd";
 import axios from "axios";
 //设置代理的基础路径、超时时间
@@ -33,8 +34,9 @@ request.interceptors.response.use(
   error => { 
     const {response} = error
     message.error(response.data.message)
-    if(response.status === 401) {
-      window.location.href = '/login'
+    if(response.status === 401) {      
+      store.dispatch(removeToken())
+      window.location.href = '#/login'
     }
     // throw error
     return Promise.reject(error)

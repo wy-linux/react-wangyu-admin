@@ -3,7 +3,6 @@ import {findSideBarRoutes} from '../router'
 export function returnPagePermission () {
     const [routes] = findSideBarRoutes()
     window.location.href = `#${routes.children![0].path!}`
-    return null
 }
 //递归获取展开的table row id
 export function getExpandedRowKeys (list: any, lv?: number){

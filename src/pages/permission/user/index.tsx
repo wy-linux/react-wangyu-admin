@@ -267,18 +267,18 @@ const User: React.FC = () => {
       title: '用户昵称',
       dataIndex: 'name',
     },
-    {
-      title: '角色列表',
-      dataIndex: 'roleName',
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createTime',
-    },
-    {
-      title: '更新时间',
-      dataIndex: 'updateTime',
-    },
+    // {
+    //   title: '角色列表',
+    //   dataIndex: 'roleName',
+    // },
+    // {
+    //   title: '创建时间',
+    //   dataIndex: 'createTime',
+    // },
+    // {
+    //   title: '更新时间',
+    //   dataIndex: 'updateTime',
+    // },
     {
       title: '操作',
       render(row: UserItem) {

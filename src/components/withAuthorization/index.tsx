@@ -10,7 +10,7 @@ const withAuthorization = (WrappedComponent: FC) => {
     //读取redux: token登录与退出登录会重新执行   
     const { token, name} = useAppSelector(selectUser);
     const { pathname } = useLocation();
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();  
     // 有token, 说明登录过
     if (token) {
       // 如果要去的是登陆页面或根路径路由, 自动访问权限拥有页面

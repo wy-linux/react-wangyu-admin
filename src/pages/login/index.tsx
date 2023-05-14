@@ -1,14 +1,17 @@
 
 import React, { useState } from 'react'
-import { Form, Input, Button, Select} from "antd";
+import { Form, Input, Button, Select, Tooltip} from "antd";
 import { useAppDispatch } from "@/store/hooks";
-import { loginAsync, LoginParams } from "@/store/slicers/userSlice";
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { loginAsync, LoginParams, restoreAsync} from "@/store/slicers/userSlice";
+import { LockOutlined, UserOutlined, ToolOutlined } from '@ant-design/icons';
 import "./index.less"
 
 const Login: React.FC = () => {
   const [isInputSelect, setIsInputSelect] = useState<boolean>(true)
   const dispatch = useAppDispatch()
+  const handleClick = async() => {
+    dispatch(restoreAsync())
+  } 
   const handleInputSelect = () => {
     setIsInputSelect(!isInputSelect)
   }
@@ -18,6 +21,17 @@ const Login: React.FC = () => {
   return (
     <div className="login">
       <div className="login-container">
+        <div className='restore-box'>
+          <Tooltip title="删除原有数据后无法登录可点击恢复MongoDB数据库！">
+            <Button 
+              icon={<ToolOutlined />} 
+              type="primary" 
+              onClick={handleClick}
+            >
+              还原MongoDB数据库
+            </Button>
+          </Tooltip>
+        </div>
         <h1>wangyu-admin</h1>
         <Form
           name="basic"

@@ -18,3 +18,9 @@ export const reqLogout = () => {
 export const reqGetUserInfo = () => {
   return request.get<any, ReqGetUserInfoResponse>("/permission/info");
 };
+
+// 恢复数据库
+export const reqRestore = () => {
+  return request.get<any, any>("/mongorestore");
+};
+

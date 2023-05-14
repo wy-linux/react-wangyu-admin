@@ -1,4 +1,4 @@
-import { reqGetUserInfo, reqLogin, reqLogout } from "@/api/user";
+import { reqGetUserInfo, reqLogin, reqLogout, reqRestore } from "@/api/user";
 import { RootState } from "../index";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -43,6 +43,11 @@ export const logoutAsync = createAsyncThunk(
   'user/LogoutAsync',
   () => reqLogout()
 )
+// 恢复数据库
+export const restoreAsync = createAsyncThunk(
+  'user/RestoreAsync',
+  () => reqRestore()
+)
 
 // 创建当前redux模块的管理对象slice
 const userSlice = createSlice({
@@ -54,13 +59,18 @@ const userSlice = createSlice({
       const token = action.payload;
       state.token = token
       localStorage.setItem('token',token)
+    },
+    removeToken(state) {
+      state.token = ''
+      state.name = ''
+      localStorage.removeItem('token')
     }
   },
   // 为前面定义的异步action, 定义对应的reducer
   extraReducers(builder) {
     builder
       // 登陆请求成功后的reducer处理
-      .addCase(loginAsync.fulfilled, (state, action) => {      
+      .addCase(loginAsync.fulfilled, (state, action) => {  
         // 将token保存localStorage / redux
         const token:any = action.payload
         localStorage.setItem('token',token)
@@ -84,13 +94,22 @@ const userSlice = createSlice({
         state.buttons = []
         localStorage.removeItem('token')
       })
+      // 恢复数据库后的reducer处理
+      .addCase(restoreAsync.fulfilled, (state, action) => {
+        state.name = ''
+        state.avatar = ''
+        state.token = ''
+        state.routes = []
+        state.buttons = []
+        localStorage.removeItem('token')
+      })
   },
 })
 
 // 暴露reducer
 export const userReducer = userSlice.reducer
 
-export const { setToken } = userSlice.actions;
+export const { setToken, removeToken } = userSlice.actions;
 
 // 暴露用于读取当前状态数据的select函数
 export const selectUser = (state: RootState) => state.user
