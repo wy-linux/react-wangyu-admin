@@ -148,7 +148,7 @@ const User: React.FC = () => {
       async onOk() {
         try {
           await batchDelUser(selectedIds)
-          message.success('删除成功')
+          // message.success('删除成功')
           initUserList(1, 5)
         } catch (e) {}
       },
@@ -173,11 +173,11 @@ const User: React.FC = () => {
         if (modalType === 1) {
           await adduser(values)
           initUserList(1, 5)
-          message.success('添加成功')
+          // message.success('添加成功')
         } else if (modalType === 2) {
           await updateUser({...user, ...values})
           initUserList()
-          message.success('修改成功')
+          // message.success('修改成功')
         }
         setIsModalOpen(false)
       })
@@ -192,7 +192,7 @@ const User: React.FC = () => {
     try {
       await assignRoles(adminId, roleId)
       initUserList()
-      message.success('分配角色成功')
+      // message.success('分配角色成功')
       setIsModalOpen(false)
     } catch (e) {}
   }
@@ -240,7 +240,7 @@ const User: React.FC = () => {
       async onOk() {
         try {
           await delUser(id)
-          message.success('删除成功')
+          // message.success('删除成功')
           initUserList(1, 5)
         } catch (e) {}
       },

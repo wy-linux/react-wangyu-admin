@@ -21,10 +21,10 @@ request.interceptors.response.use(
   //请求成功
   response => {
     //多个提示信息只显示一个
-    message.config({
-      duration: 2,
-      maxCount: 1,
-    })
+    // message.config({
+    //   duration: 2,
+    //   maxCount: 1,
+    // })
     if(response.status === 200){//请求成功
       message.success(response.data.message)
     }

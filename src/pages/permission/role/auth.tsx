@@ -98,7 +98,7 @@ const Auth: React.FC = () => {
   const handleSave = async() => {
     try {
       await doAssign(id, idsList);
-      message.success('分配权限成功')
+      // message.success('分配权限成功')
       navigate('/permission/role', {replace: true})
       // TODO：分配权限以后还需要判断当前用户是否有分配的权限
     } catch(e) {}

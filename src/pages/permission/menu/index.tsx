@@ -111,10 +111,10 @@ const Permision: React.FC = () => {
         try {
           if (permision._id) {
             await updatePermission({ ...permision, ...values })
-            message.success('修改成功')
+            // message.success('修改成功')
           } else {
             await addPermission({ ...permision, ...values })
-            message.success('添加成功')
+            // message.success('添加成功')
           }
           setIsModalOpen(false)
           getList()
@@ -136,7 +136,7 @@ const Permision: React.FC = () => {
       async onOk() {
         try {
           await removePermission(id)
-          message.success('删除成功')
+          // message.success('删除成功')
           getList()
         } catch (e) {}
       },
