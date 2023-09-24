@@ -1,19 +1,31 @@
-import React, { useEffect } from "react";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+import React from "react";
+import { Button, Spin } from 'antd';
+import { useAppDispatch } from "@/store/hooks";
+import { removeToken } from "@/store/slicers/userSlice";
+import './index.less'
 
-NProgress.configure({
-  showSpinner: false,
-});
+interface LoadingProps {
+    loginReturn?: boolean;
+    size?: "small" | "default" | "large" ;
+}
 
-const Loading: React.FC = () => {
-  NProgress.start();
+const Loading: React.FC<LoadingProps> = ({loginReturn, ...props}) => {
+    const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    NProgress.done();
-  }, []);
+    const returnClick = () => {
+        dispatch(removeToken())
+    }
 
-  return <></>;
+    return (
+        <div className="loading-container">
+            <Spin {...props}/>
+            {loginReturn && (
+                <Button type="primary" onClick={returnClick}>
+                    返回登录页
+                </Button>
+            )}
+        </div>
+    )
 }
 
 export default Loading;

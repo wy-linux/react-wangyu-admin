@@ -1,19 +1,22 @@
 import React from 'react'
-import { useTranslation } from "react-i18next";
 import { Card } from "antd";
-import { useAppSelector } from "@/store/hooks";
-import { selectUser } from "@/store/slicers/userSlice";
+import { DESCRIPTIONS } from './constants'
+import './index.less'
 
- const Home: React.FC = () => {
-  const user = useAppSelector(selectUser);
-  const { t } = useTranslation(["app"]);
+const Home: React.FC = () => {
 
-  return (
-    <Card style={{ minHeight: "calc(100vh - 64px)" }}>
-      <h2>{t("home")}</h2>
-      <h2>用户名: {user.name}</h2>
-    </Card>
-  );
+    return (
+        <div className='home-container'>
+            <h2>WangYu-admin使用说明</h2>
+            <ul className='home-content'>
+                {DESCRIPTIONS.map(({ text }) => (
+                    <li className='home-content-item'>
+                        <span>{text}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default Home;

@@ -1,11 +1,12 @@
 import  request  from "@/utils/request"
+import { Menu } from "./model/permisionTypes"
 const api_name = '/permission/menu'
 /**
  * 获取权限(菜单/功能)列表
  * @returns 
  */
 export const getPermissionList = () => { 
-  return request.get(`${api_name}/info`);
+  return request.get(`${api_name}/info`) as Promise<Menu>
 }
 
 /**
@@ -35,12 +36,12 @@ export const updatePermission = (permission: any) => {
  * 查看某个角色的权限列表
  */
 export const toAssign = (roleId: string | undefined) => {  
-  return request.get(`/permission/role/menuInfo/${roleId}`)
+  return request.get(`/permission/role/menuInfo/${roleId}`) as Promise<Menu>
 }
 
 /**
  * 给某个角色授权
  */
-export const doAssign = (roleId: string | undefined, permissionId: any) => {
+export const doAssign = (roleId: string | undefined, permissionId: string[]) => {
   return request.post(`/permission/role/menuInfo/update`, {roleId, permissionId})
 }

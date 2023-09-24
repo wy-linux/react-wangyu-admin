@@ -1,33 +1,34 @@
 import type { ReactElement } from "react";
-import type { RouteObject } from "react-router-dom";
 
 export interface SMeta {
-  icon?: ReactElement;
-  title?: string | ReactElement;
+    icon?: ReactElement;
+    title?: string | ReactElement;
 }
 
-export interface SRoute extends RouteObject {
-  children?: SRoutes;
-  meta?: SMeta;
-  hidden?: boolean;
-  name: string;
+export interface Route {
+    path: string;
+    children?: Routes;
+    meta?: SMeta;
+    hidden?: boolean;
+    name: string;
+    element: JSX.Element;
 }
 
-export type SRoutes = SRoute[];
+export type Routes = Route[];
 
 
 export interface TreeRouterFilterParams {
-  routeHash: Record<string, any>;
-  allAsyncRoutes: SRoutes;
-  lv?: number
+    routeHash: Record<string, any>;
+    allAsyncRoutes: Routes;
+    lv?: number
 }
 export interface TreeRouterFilter {
-  (params: TreeRouterFilterParams): SRoutes
+    (params: TreeRouterFilterParams): Routes
 }
-export interface FilterRouterParams{
-  allAsyncRoutes: SRoutes,
-  routes: string[]
+export interface FilterRouterParams {
+    allAsyncRoutes: Routes,
+    routes: string[]
 }
 export interface FilterRouter {
-  (params: FilterRouterParams): SRoutes 
+    (params: FilterRouterParams): Routes
 }

@@ -38,13 +38,3 @@ export const updateUser = (user: RoleTypes) => {
 export const delUser = (id: number) => {
   return request.get(`${api_name}/delete/${id}`)
 }
-
-/**
- * @description: 批量删除用户
- * @param {UserTypes} user
- * @returns {*}
- */
- export const batchDelUser = (idList: Key[]) => {
-  return request.delete(`${api_name}/batchRemove`, {data: idList})
-}
-

@@ -1,25 +1,27 @@
-export interface PermisionTypes {
-  _id: string;
-  name: string;
-  code: string;
-  toCode: string;
-  level: number;
+export interface MenuItem {
+    _id: string;
+    name: string;
+    code: string;
+    toCode: string;
+    level: number;
+    select: boolean
+    children: MenuItem[]
 }
 
-export type PermisionItemList = PermisionTypes[];
+export type Menu = MenuItem[];
 
 export interface PermisionType {
-  _id?: string;
-  level: number;
-  name: string;
-  code: string;
-  toCode: string;
-  pid?: string,
-  type?: number
+    _id?: string;
+    level: number;
+    name: string;
+    code: string;
+    toCode: string;
+    pid?: string,
+    type?: number
 }
 
 export interface PermisionItem {
-  name: string;
-  code: string | null;
-  toCode: string | null;
+    name: string;
+    code: string | null;
+    toCode: string | null;
 }

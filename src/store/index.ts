@@ -4,10 +4,10 @@ import { appReducer } from "./slicers/appSlice";
 
 // 配置reducer, 生成store
 const store = configureStore({
-  reducer: {
-    user: userReducer,
-    app: appReducer,
-  },
+    reducer: {
+        user: userReducer,
+        app: appReducer,
+    },
 });
 
 // 默认暴露store

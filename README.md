@@ -8,20 +8,47 @@
 ##### 权限校验模块
 
 ```javascript
-const App: React.FC = () => {  
-  const lang = useAppSelector(selectLang);
-  return <ConfigProvider locale={lang === "zh_CN" ? zhCN : enUS}>{useAppRoutes()}</ConfigProvider>;
-}
-export default withAuthorization(App); 
-// HOC 封装 App-->WrappedComponent
-const withAuthorization = (WrappedComponent: FC)
-// 获取后端路由 动态生成路由
 export const useAppRoutes = () => {
-  const {routes} = useAppSelector(selectUser);  
-  resultRouter = routes?.length ? filterRouter({
+    //获取后端权限列表 
+    const { routes } = useAppSelector(selectUser);
+    //动态生成路由
+    resultRoutes = filterRouter({
+        allAsyncRoutes: cloneDeep(allAsyncRoutes),
+        routes
+    }) 
+    return useRoutes([...resultRoutes, ...constantRoutes]);
+};
+
+export const filterRouter: FilterRouter = ({
     allAsyncRoutes,
     routes
-  }) : constantRoutes  
-  return useRoutes([...resultRouter, ...anyRoute]);
-};
+}) => {
+    //hash表结构化， 以优化时间复杂度
+    const routeHash = (() => {
+        const hash: Record<string, any> = {};
+        routes.forEach((route) => { hash[route] = true });
+        return hash
+    })()
+    return treeRouterFilter({
+        routeHash,
+        allAsyncRoutes,
+    })
+}
+
+//递归处理
+const treeRouterFilter: TreeRouterFilter = ({
+    routeHash,
+    allAsyncRoutes,
+    lv = 0
+}) => {
+    return allAsyncRoutes.filter(router => {
+        router.children = treeRouterFilter({
+            routeHash,
+            allAsyncRoutes: router.children || [],
+            lv: lv + 1
+        })
+        return (lv === 0) || routeHash[router.name]
+    })
+}
+
 ```
